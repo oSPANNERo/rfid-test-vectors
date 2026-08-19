@@ -32,11 +32,11 @@ Software that needs to classify a readable Key B value as an authentication key 
 
 ### Sector 2
 
-The card contains Key A `C7 39 5A E1 84 2D`, but that valid Key A is deliberately absent from `mfc1k_iceman_state_matrix.dic`.
+The card contains Key A `A0 A1 A2 A3 A4 02`, but that valid Key A is deliberately absent from `mfc1k_iceman_state_matrix.dic`.
 
 Expected GUI result: Key A remains unresolved, and Key B also remains unresolved because the trailer cannot first be authenticated and read with Key A.
 
-The Proxmark3 binary key file likewise contains a deliberately incorrect Key A for this sector.
+The Proxmark3 binary key file likewise contains a deliberately incorrect Key A for this sector (`C0 C1 C2 C3 C4 02`).
 
 ### Sector 10
 
