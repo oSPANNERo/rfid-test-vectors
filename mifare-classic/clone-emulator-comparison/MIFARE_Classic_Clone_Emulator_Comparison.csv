@@ -1,0 +1,17 @@
+Test,Original source,Gen1a clone,Gen2/CUID clone,Chameleon Ultra,Flipper Zero
+UID,42DCAEF2,Match,Match,Match,Match
+ATQA,00 04,Match,Match,Match,Match
+SAK,08,Match,Match,Match,Match
+RATS,Unsupported,Unsupported,Unsupported,Unsupported,Unsupported
+Block 0,Canonical,Match,Match,Match,Match
+Blocks 20–22,Canonical,Match,Match,Match,Match
+Diagnostic B-fields,Canonical,7/7 match,7/7 match,7/7 match,7/7 match
+Crypto1 authentication,Yes,Yes,Yes,Yes,Yes
+PM3 fingerprint,n/a,n/a,n/a,n/a,n/a
+PM3 magic detection,<n/a>,Gen1a,Gen2/CUID,<n/a>,<n/a>
+PRNG classification,Weak,Static nonce,Weak,Weak,Hard
+Special nonce behavior,Static encrypted nonce,Static 01200145,Normal weak PRNG,Does not reproduce source SEN behavior,Hard PRNG
+Memory fidelity,Baseline,Yes,Yes,Yes,Yes
+Donor-independent behavior tested?,—,—,—,—,Yes
+Best distinguishing signal,Baseline,Gen1a probe / static nonce,Gen2/CUID probe,Missing source SEN behavior,Hard PRNG
+Easy to distinguish from original?,—,Yes,Yes,"Yes, behaviorally","Yes, PRNG"
