@@ -15,9 +15,17 @@ This test vector validates `hf mf dump` behavior when a MIFARE Classic 1K contai
 
 ## Design
 
-Even sectors (`0, 2, 4, ... 14`) use trailer ACL/GPB `FF 07 80 69`. Key B is readable data and cannot authenticate. The actual card-returned B field is `E0 E1 E2 E3 E4 xx`, while the supplied key file deliberately contains the wrong value `D0 D1 D2 D3 D4 xx`.
+Even sectors (`0, 2, 4, ... 14`) use trailer ACL/GPB `FF 07 80 69`. The Key B field is readable trailer data. The actual card-returned B field is `E0 E1 E2 E3 E4 xx`, while the supplied key file deliberately contains the wrong value `D0 D1 D2 D3 D4 xx`.
+
+This vector is intended to be exercised with an implementation that models the behavior specified by the NXP MIFARE Classic EV1 datasheet: when Key B is readable from the sector trailer, it is not usable for subsequent authenticated memory access via Key B.
 
 Odd sectors (`1, 3, 5, ... 15`) use trailer ACL/GPB `F7 8F 00 69`. Key B is protected and usable for authentication. The supplied key file contains the correct `B0 B1 B2 B3 B4 xx` value.
+
+### Compatibility note
+
+Do not infer Key B authentication usability from the ACL alone when testing arbitrary physical cards or compatible implementations. A tested physical MIFARE Classic-compatible card returned readable Key B bytes under `FF 07 80 69` and also accepted those same bytes for authentication and subsequent memory access.
+
+Software that needs to classify a readable Key B value as an authentication key should therefore validate actual Key B memory access instead of assuming the result solely from the access-condition bits.
 
 ## Test
 
